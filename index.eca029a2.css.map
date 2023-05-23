@@ -1,0 +1,1 @@
+{"mappings":"ACAA","sources":["index.eca029a2.css","src/index.css"],"sourcesContent":[".breed-select {\n  width: 200px;\n  padding: 4px;\n}\n\n/*# sourceMappingURL=index.eca029a2.css.map */\n",".breed-select{\n    width: 200px;\n    padding: 4px;\n}\n"],"names":[],"version":3,"file":"index.eca029a2.css.map"}
