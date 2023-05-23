@@ -1,23 +1,24 @@
-import './css/styles.css';
+import {fetchBreeds} from './cat-api.js';
 
-const DEBOUNCE_DELAY = 300;
 
-import {fetchCountries} from './index.js';
+const select = document.querySelector('.breed-select');
+select.addEventListener('change', functionSelect);
+console.dir(select);
 
-// ?fields=name.official,capital,population,flags.svg,languages
+functionSelect()
 
-refs = {
-input:document.querySelector("#search-box")
+function functionSelect(evt){
+    const {id} = select.value;
+
+fetchBreeds()
+.then(data => select.insertAdjacentHTML = console.log(select.insertAdjacentHTML('beforeend', createMarkup(data.breeds))  ))
+.catch(err => console.error(err)
+)
+
 }
-
-// const createCardCounties = 
-// `<li class= "name-country">${dwq}</li>
-// <img class ='img-gallery'
-// src = ${dsa}
-// alt =${dsad}>
-// </li>`
-
-
-
-// gallaryEl.insertAdjacentHTML("afterbegin", createImage)
-// console.log(createImage)
+function createMarkup(arr) {
+    return arr.map(({id}) => 
+    `<option value="ddd">"ggg"</option>`)
+    .join('')
+   
+}
