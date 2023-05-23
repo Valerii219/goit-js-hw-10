@@ -10,12 +10,12 @@ refs = {
 input:document.querySelector("#search-box")
 }
 
-const createCardCounties = 
-`<li class= "name-country">${dwq}</li>
-<img class ='img-gallery'
-src = ${dsa}
-alt =${dsad}>
-</li>`
+// const createCardCounties = 
+// `<li class= "name-country">${dwq}</li>
+// <img class ='img-gallery'
+// src = ${dsa}
+// alt =${dsad}>
+// </li>`
 
 
 
