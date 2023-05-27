@@ -2,14 +2,30 @@ import {fetchBreeds, fetchCatByBreed} from './cat-api.js';
 
 const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
-const load = document.querySelector('.loader')
-// load.addEventListener()
+const load = document.querySelector('p.loader');
+console.log(load);
+// load.textContent = 'jdsjfd';
+
+function showLoader(){
+    load.style.display = 'block'}
+
+    function hideLoader(){
+        load.style.display = 'none'
+    }
+    fetchData()
+    function fetchData() {
+        showLoader(); 
+        fetchBreeds();
+        hideLoader();
+    }
+        
+        
 
 
-
-select.addEventListener('change', () => {
+ select.addEventListener('change', () => {
     const selectedOption = select.options[select.selectedIndex];
     const selectedValue = selectedOption.value;
+ 
 
 fetchCatByBreed(selectedValue)
 .then(data =>{
@@ -18,6 +34,7 @@ fetchCatByBreed(selectedValue)
     .catch(err => {
         console.error(err);
         }); 
+        
 })
 
 
