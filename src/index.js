@@ -9,27 +9,29 @@ select.addEventListener('change', functionSelect);
 fetchBreeds()
 .then(data => {
 const markup = createMarkup(data);
-
 select.innerHTML = markup;
-
 })
 .catch(err => {
 console.error(err);
 });
 
-
 function functionSelect() {
 const selectedOptionValue = select.value;
-if (selectedOptionValue) {
+if (selectedOptionValue){
     fetchCatByBreed(select.value)
     .then(data => {
-    const markupInfo = createMarkupInfo(data);
-    cotInfo.innerHTML = markupInfo;
-})
-    .catch(err => {
-    console.error(err);
-    });
-}
+        const markupInfo = `<ul>
+        <img src="${breed.url}" alt="${breed.name}">
+        <li>${breed.id}</li>
+        <li>${breed.description}</li>
+        <li>${breed.temperament}</li>
+      </ul>`;
+      cotInfo.insertAdjacentElement = ('beforeend', markupInfo );
+        })
+        .catch(err => {
+        console.error(err);
+        });
+    }
 }
 
 function createMarkup(arr) {
@@ -38,11 +40,8 @@ return arr
     `)
     .join('');}
 
-
-
-
 function createMarkupInfo(arr){
-    
+    console.log(arr);
     return arr
     .map(breed => `<ul>
       <img src="${breed.url}" alt="${breed.name}">
@@ -52,3 +51,4 @@ function createMarkupInfo(arr){
     </ul>`)
     .join('');
 }
+
