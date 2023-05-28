@@ -1,6 +1,7 @@
 .breed-select{
     width: 200px;
     padding: 4px;
+    display: block;
 }
 .loader{
     display: none;
@@ -15,3 +16,10 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   } */
+
+  .error{
+    display: none;
+  }
+  .cat-info{
+    display: block;
+  }
