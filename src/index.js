@@ -36,7 +36,10 @@ fetchBreeds()
     const markup = createMarkup(data);
     select.innerHTML = markup;
     Notiflix.Loading.remove(500);
-  }) 
+  }) .catch(err => {
+    Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
+    
+  })
 
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
