@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 
 const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
-const load = document.querySelector('p.loader');
+const load = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
 function errorN() {
@@ -27,13 +27,30 @@ function showElements() {
   select.style.display = 'block';
   catInfo.style.display = 'block';
 }
+reloadF();
+function reloadF() {
+  Notiflix.Loading.standard(`${load.textContent}`);
+}
 
-Notiflix.Loading.standard(`${load.textContent}`)
-fetchBreeds().then(data => {
-  const markup = createMarkup(data);
-  select.innerHTML = markup;
-});
-Notiflix.Loading.remove(500)
+Notiflix.Loading.remove(1000);
+const timeout = setTimeout(() => {
+  fetch();
+  showElements();
+}, 1200);
+
+function fetch() {
+  fetchBreeds()
+    .then(data => {
+      const markup = createMarkup(data);
+      select.innerHTML = markup;
+    })
+    .catch(err => {
+      hideElements();
+      Notiflix.Report.failure(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
+    });
+}
 
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
@@ -51,8 +68,8 @@ select.addEventListener('change', () => {
       Notiflix.Report.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
+      showElements();
       hideLoader();
-      hideElements();
     })
     .finally(() => {
       if (!fetchCatByBreed().catch) {

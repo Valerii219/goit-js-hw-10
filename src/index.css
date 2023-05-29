@@ -1,7 +1,7 @@
 .breed-select {
   width: 200px;
   padding: 4px;
-  display: block;
+  display: none;
 }
 body {
   font-family: 'Roboto', sans-serif;
