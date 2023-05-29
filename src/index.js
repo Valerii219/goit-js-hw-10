@@ -1,7 +1,7 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import Notiflix from 'notiflix';
 
-const select = document.querySelector('#single');
+const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const load = document.querySelector('p.loader');
 const error = document.querySelector('.error');
@@ -32,9 +32,8 @@ Notiflix.Loading.standard(`${load.textContent}`);
 fetchBreeds().then(data => {
   const markup = createMarkup(data);
   select.innerHTML = markup;
-})
-Notiflix.Loading.remove(500)
-
+});
+Notiflix.Loading.remove(500);
 
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
