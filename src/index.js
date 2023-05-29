@@ -37,7 +37,7 @@ fetchBreeds()
     select.innerHTML = markup;
     Notiflix.Loading.remove(500);
   }) .catch(err => {
-    Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
+    // Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
     
   })
 
