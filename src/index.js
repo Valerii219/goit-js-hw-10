@@ -43,6 +43,7 @@ catInfo.style.display = 'block'}
 
 
 fetchBreeds()
+Notiflix.Loading.standard("scccsc")
 .then(data => {
     const markup = createMarkup(data);
     select.innerHTML = markup;
