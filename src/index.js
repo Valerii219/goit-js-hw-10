@@ -35,12 +35,10 @@ fetchBreeds()
 .then(data => {
     const markup = createMarkup(data);
     select.innerHTML = markup;
-    
-  })
-  Notiflix.Loading.remove(500);
-  
+    Notiflix.Loading.remove(500);
+  });
 
-select.addEventListener('change', () => {
+const selectOption = select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
   const selectedValue = selectedOption.value;
   showLoader();
