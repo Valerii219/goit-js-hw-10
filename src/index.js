@@ -1,6 +1,5 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import Notiflix from 'notiflix';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const select = document.querySelector('#single');
 const catInfo = document.querySelector('.cat-info');
@@ -29,12 +28,12 @@ function showElements() {
   catInfo.style.display = 'block';
 }
 
-
-fetchBreeds()
-.then(data => {
-    const markup = createMarkup(data);
-    select.innerHTML = markup;
-  });
+Notiflix.Loading.standard(`${load.textContent}`);
+fetchBreeds().then(data => {
+  const markup = createMarkup(data);
+  select.innerHTML = markup;
+});
+Notiflix.Loading.remove(500);
 
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
@@ -49,7 +48,9 @@ select.addEventListener('change', () => {
       showElements();
     })
     .catch(err => {
-      Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
+      Notiflix.Report.failure(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
       hideLoader();
       hideElements();
     })
