@@ -32,8 +32,9 @@ Notiflix.Loading.standard(`${load.textContent}`);
 fetchBreeds().then(data => {
   const markup = createMarkup(data);
   select.innerHTML = markup;
-});
-Notiflix.Loading.remove(500);
+})
+Notiflix.Loading.remove(500)
+
 
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
