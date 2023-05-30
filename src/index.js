@@ -31,27 +31,24 @@ reloadF();
 function reloadF() {
   Notiflix.Loading.standard(`${load.textContent}`);
 }
-
 Notiflix.Loading.remove(1000);
 const timeout = setTimeout(() => {
   fetch();
   showElements();
 }, 1200);
 
-function fetch() {
-  fetchBreeds()
-    .then(data => {
-      const markup = createMarkup(data);
-      select.innerHTML = markup;
-    })
-    .catch(err => {
-      hideElements();
-      Notiflix.Report.failure(
-        'Oops! Something went wrong! Try reloading the page!'
-      );
-    });
-}
+async function fetch() {
+  try {
+  const data = await fetchBreeds();
+  const markup = createMarkup(data);
+  select.innerHTML = markup;
+  } catch (err) {
+  hideElements();
+  Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
+  }
+  }
 
+  
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
   const selectedValue = selectedOption.value;
