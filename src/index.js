@@ -64,7 +64,8 @@ select.addEventListener('change', () => {
       catInfo.innerHTML = markupInfo;
       if(data.length === 0){
         Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!')
-        return hideLoader(); 
+         hideLoader(); 
+         return;
       }
       hideLoader();
       showElements();
