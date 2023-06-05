@@ -6,6 +6,7 @@ const catInfo = document.querySelector('.cat-info');
 const load = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
+
 function errorN() {
   error.style.display = 'none';
 }
@@ -42,6 +43,7 @@ async function fetch() {
   const data = await fetchBreeds();
   const markup = createMarkup(data);
   select.innerHTML = markup;
+ console.log(data);
   } catch (err) {
   hideElements();
   Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!');
@@ -52,12 +54,18 @@ async function fetch() {
 select.addEventListener('change', () => {
   const selectedOption = select.options[select.selectedIndex];
   const selectedValue = selectedOption.value;
+  
   showLoader();
   hideElements();
   fetchCatByBreed(selectedValue)
     .then(data => {
+   
       const markupInfo = createMarkupInfo(data);
       catInfo.innerHTML = markupInfo;
+      if(data.length === 0){
+        Notiflix.Report.failure('Oops! Something went wrong! Try reloading the page!')
+        return hideLoader(); 
+      }
       hideLoader();
       showElements();
     })
@@ -65,6 +73,7 @@ select.addEventListener('change', () => {
       Notiflix.Report.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
+   
       showElements();
       hideLoader();
     })
