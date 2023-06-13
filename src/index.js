@@ -5,7 +5,24 @@ const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const load = document.querySelector('.loader');
 const error = document.querySelector('.error');
-
+Notiflix.Loading.init({
+  className: 'notiflix-loading',
+  zindex: 4000,
+  backgroundColor: 'rgba(0,0,0,0.8)',
+  rtl: false,
+  fontFamily: 'Quicksand',
+  cssAnimation: true,
+  cssAnimationDuration: 400,
+  clickToClose: false,
+  customSvgUrl: null,
+  customSvgCode: null,
+  svgSize: '80px',
+  svgColor: '#f87719', // Змінено на червоний колір
+  messageID: 'NotiflixLoadingMessage',
+  messageFontSize: '15px',
+  messageMaxLength: 34,
+  messageColor: '#f87719',
+});
 
 function errorN() {
   error.style.display = 'none';
@@ -32,7 +49,7 @@ reloadF();
 function reloadF() {
   Notiflix.Loading.standard(`${load.textContent}`);
 }
-Notiflix.Loading.remove(1000);
+Notiflix.Loading.remove(3000);
 const timeout = setTimeout(() => {
   fetch();
   showElements();
